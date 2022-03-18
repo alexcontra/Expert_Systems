@@ -1,8 +1,10 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
 import 'package:expertsystems/design_specs/fonts.dart';
+import 'package:expertsystems/home/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../design_specs/assets.dart';
 
@@ -90,6 +92,8 @@ class _HelloPageState extends State<HelloPage> {
             ),
           ],
         ),
-        bottomNavigationBar: StandardCircularButton(onPressed: () {}));
+        bottomNavigationBar: StandardCircularButton(onPressed: () {
+          Get.to(() => const HomePage());
+        }));
   }
 }

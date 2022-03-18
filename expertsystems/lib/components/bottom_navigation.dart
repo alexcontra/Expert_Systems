@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 import '../design_specs/assets.dart';
 import '../design_specs/constraints.dart';
-import '../quiz/quiz_page/quiz.dart';
 import 'buttons.dart';
 
 class StandardCircularButton extends StatelessWidget {

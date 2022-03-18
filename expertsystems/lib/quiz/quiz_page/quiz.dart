@@ -1,4 +1,5 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
+import 'package:expertsystems/components/buttons.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:expertsystems/service/responses/question.dart';
@@ -41,6 +42,7 @@ class _QuizPageState extends State<QuizPage> {
             : IconButton(
                 onPressed: () {
                   quizController.questionIndex.value--;
+                  setState(() {});
                 },
                 icon: const Icon(Icons.arrow_back_ios))),
         title: const Text(
@@ -84,6 +86,9 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
+          for (var element
+              in questions[quizController.questionIndex.value].answers!)
+            QuizButton(text: element, onPressed: () {}),
         ],
       ),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(
@@ -94,6 +99,7 @@ class _QuizPageState extends State<QuizPage> {
             if (quizController.questionIndex.value < questions.length - 1) {
               quizController.questionIndex.value++;
             }
+            setState(() {});
           })),
     );
   }

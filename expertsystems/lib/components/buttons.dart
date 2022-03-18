@@ -37,3 +37,32 @@ class _CustomButtonState extends State<CustomButton> {
     );
   }
 }
+
+class QuizButton extends StatelessWidget {
+  final String text;
+  final void Function()? onPressed;
+  const QuizButton({required this.text, required this.onPressed, Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+          left: AppMargins.margin10,
+          right: AppMargins.margin10,
+          top: AppMargins.margin20),
+      width: MediaQuery.of(context).size.width,
+      height: Heights.Height65,
+      child: ElevatedButton(
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: TextStyle(
+                fontSize: Sizes.size20,
+                fontWeight: FontWeight.w500,
+                color: Colors.white),
+          ),
+          style: AppStyles.setButtonStandardStyle(Colors.grey[400]!)),
+    );
+  }
+}

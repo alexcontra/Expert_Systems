@@ -1,5 +1,4 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
-import 'package:expertsystems/components/buttons.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
 import 'package:expertsystems/quiz/quiz_page/quiz.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,6 @@
+import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../design_specs/constraints.dart';
 import '../design_specs/fonts.dart';
@@ -46,6 +48,7 @@ class QuizButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    QuizController quizController = Get.put(QuizController());
     return Container(
       margin: EdgeInsets.only(
           left: AppMargins.margin10,
@@ -60,9 +63,12 @@ class QuizButton extends StatelessWidget {
             style: TextStyle(
                 fontSize: Sizes.size20,
                 fontWeight: FontWeight.w500,
-                color: Colors.white),
+                color: quizController.isPressedButton.value
+                    ? Colors.black
+                    : Colors.white),
           ),
-          style: AppStyles.setButtonStandardStyle(Colors.grey[400]!)),
+          style: AppStyles.setButtonStandardStyle(
+              quizController.buttonColors[quizController.questionIndex.value])),
     );
   }
 }

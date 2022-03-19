@@ -88,7 +88,24 @@ class _QuizPageState extends State<QuizPage> {
           ),
           for (var element
               in questions[quizController.questionIndex.value].answers!)
-            QuizButton(text: element, onPressed: () {}),
+            QuizButton(
+                text: element,
+                onPressed: () {
+                  if (quizController.isPressedButton.value) {
+                    quizController
+                            .buttonColors[quizController.questionIndex.value] =
+                        Colors.grey[400];
+                    quizController.isPressedButton.value =
+                        !quizController.isPressedButton.value;
+                  } else {
+                    quizController
+                            .buttonColors[quizController.questionIndex.value] =
+                        Colors.blue[100];
+                    quizController.isPressedButton.value =
+                        !quizController.isPressedButton.value;
+                  }
+                  setState(() {});
+                }),
         ],
       ),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(

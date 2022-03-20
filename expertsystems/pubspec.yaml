@@ -2,7 +2,7 @@ name: expertsystems
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -14,11 +14,19 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^1.0.3
+  freezed_annotation: ^1.1.0
+  get: ^4.6.1
+  freezed: ^1.1.1
+  retrofit: ^3.0.1+1
+  json_annotation: ^4.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  json_serializable: ^6.1.5
+  build_runner: ^2.1.8
   flutter_lints: ^1.0.0
 
 flutter:
@@ -30,3 +38,6 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/hello_page/
+    - assets/home_page/
+    - assets/quiz/

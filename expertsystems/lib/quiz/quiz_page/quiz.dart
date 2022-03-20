@@ -90,7 +90,7 @@ class _QuizPageState extends State<QuizPage> {
           for (int i = 0;
               i < questions[quizController.questionIndex.value].answers!.length;
               i++)
-            QuizButton(
+            Obx(() => QuizButton(
                 text: questions[quizController.questionIndex.value].answers![i],
                 index: i,
                 onPressed: () {
@@ -100,8 +100,7 @@ class _QuizPageState extends State<QuizPage> {
                   } else {
                     quizController.enableButton(i);
                   }
-                  setState(() {});
-                }),
+                })),
         ],
       ),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(

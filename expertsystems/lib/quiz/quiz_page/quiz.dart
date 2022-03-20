@@ -86,23 +86,19 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
-          for (var element
-              in questions[quizController.questionIndex.value].answers!)
+          for (int i = 0;
+              i < questions[quizController.questionIndex.value].answers!.length;
+              i++)
             QuizButton(
-                text: element,
+                text: questions[quizController.questionIndex.value].answers![i],
+                index: i,
                 onPressed: () {
                   if (quizController.isPressedButton.value) {
-                    quizController
-                            .buttonColors[quizController.questionIndex.value] =
-                        Colors.grey[400];
-                    quizController.isPressedButton.value =
-                        !quizController.isPressedButton.value;
+                    quizController.buttonColors[i] = Colors.grey[400];
+                    quizController.buttonColorsText[i] = Colors.white;
                   } else {
-                    quizController
-                            .buttonColors[quizController.questionIndex.value] =
-                        Colors.blue[100];
-                    quizController.isPressedButton.value =
-                        !quizController.isPressedButton.value;
+                    quizController.buttonColors[i] = Colors.blue[100];
+                    quizController.buttonColorsText[i] = Colors.black;
                   }
                   setState(() {});
                 }),

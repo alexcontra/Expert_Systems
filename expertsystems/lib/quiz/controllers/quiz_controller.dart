@@ -10,4 +10,10 @@ class QuizController extends GetxController {
     Colors.grey[400],
     Colors.grey[400]
   ].obs;
+  RxList buttonColorsText = [
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.white,
+  ].obs;
 }

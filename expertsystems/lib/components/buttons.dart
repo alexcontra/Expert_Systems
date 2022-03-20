@@ -42,33 +42,36 @@ class _CustomButtonState extends State<CustomButton> {
 
 class QuizButton extends StatelessWidget {
   final String text;
+  final int index;
   final void Function()? onPressed;
-  const QuizButton({required this.text, required this.onPressed, Key? key})
+  const QuizButton(
+      {required this.text,
+      required this.index,
+      required this.onPressed,
+      Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     QuizController quizController = Get.put(QuizController());
-    return Container(
-      margin: EdgeInsets.only(
-          left: AppMargins.margin10,
-          right: AppMargins.margin10,
-          top: AppMargins.margin20),
-      width: MediaQuery.of(context).size.width,
-      height: Heights.Height65,
-      child: ElevatedButton(
-          onPressed: onPressed,
-          child: Text(
-            text,
-            style: TextStyle(
-                fontSize: Sizes.size20,
-                fontWeight: FontWeight.w500,
-                color: quizController.isPressedButton.value
-                    ? Colors.black
-                    : Colors.white),
-          ),
-          style: AppStyles.setButtonStandardStyle(
-              quizController.buttonColors[quizController.questionIndex.value])),
-    );
+    return Obx(() => Container(
+          margin: EdgeInsets.only(
+              left: AppMargins.margin10,
+              right: AppMargins.margin10,
+              top: AppMargins.margin20),
+          width: MediaQuery.of(context).size.width,
+          height: Heights.Height65,
+          child: ElevatedButton(
+              onPressed: onPressed,
+              child: Text(
+                text,
+                style: TextStyle(
+                    fontSize: Sizes.size20,
+                    fontWeight: FontWeight.w500,
+                    color: quizController.buttonColorsText[index]),
+              ),
+              style: AppStyles.setButtonStandardStyle(
+                  quizController.buttonColors[index])),
+        ));
   }
 }

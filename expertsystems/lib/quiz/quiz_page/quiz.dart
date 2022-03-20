@@ -2,6 +2,7 @@ import 'package:expertsystems/components/bottom_navigation.dart';
 import 'package:expertsystems/components/buttons.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
+import 'package:expertsystems/quiz/end_quiz/end_quiz.dart';
 import 'package:expertsystems/service/responses/question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,7 +43,7 @@ class _QuizPageState extends State<QuizPage> {
             : IconButton(
                 onPressed: () {
                   quizController.questionIndex.value--;
-                  quizController.disableButton();
+                  quizController.disableButton(5);
                   setState(() {});
                 },
                 icon: const Icon(Icons.arrow_back_ios))),
@@ -95,7 +96,7 @@ class _QuizPageState extends State<QuizPage> {
                 index: i,
                 onPressed: () {
                   if (quizController.questionSelectedIndex.value != 5) {
-                    quizController.disableButton();
+                    quizController.disableButton(5);
                     quizController.enableButton(i);
                   } else {
                     quizController.enableButton(i);
@@ -113,7 +114,9 @@ class _QuizPageState extends State<QuizPage> {
                   if (quizController.questionIndex.value <
                       questions.length - 1) {
                     quizController.questionIndex.value++;
-                    quizController.disableButton();
+                    quizController.disableButton(5);
+                  } else {
+                    Get.to(() => const EndQuiz());
                   }
                   setState(() {});
                 })),

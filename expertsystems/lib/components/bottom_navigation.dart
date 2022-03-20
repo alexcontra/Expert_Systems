@@ -45,7 +45,7 @@ class StandardCircularButton extends StatelessWidget {
 }
 
 class StandardBottomNavigation extends StatelessWidget {
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final String text;
   const StandardBottomNavigation(
       {required this.text, required this.onPressed, Key? key})

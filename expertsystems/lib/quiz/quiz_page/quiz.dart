@@ -42,6 +42,7 @@ class _QuizPageState extends State<QuizPage> {
             : IconButton(
                 onPressed: () {
                   quizController.questionIndex.value--;
+                  quizController.disableButton();
                   setState(() {});
                 },
                 icon: const Icon(Icons.arrow_back_ios))),
@@ -93,12 +94,11 @@ class _QuizPageState extends State<QuizPage> {
                 text: questions[quizController.questionIndex.value].answers![i],
                 index: i,
                 onPressed: () {
-                  if (quizController.isPressedButton.value) {
-                    quizController.buttonColors[i] = Colors.grey[400];
-                    quizController.buttonColorsText[i] = Colors.white;
+                  if (quizController.questionSelectedIndex.value != 5) {
+                    quizController.disableButton();
+                    quizController.enableButton(i);
                   } else {
-                    quizController.buttonColors[i] = Colors.blue[100];
-                    quizController.buttonColorsText[i] = Colors.black;
+                    quizController.enableButton(i);
                   }
                   setState(() {});
                 }),
@@ -108,12 +108,16 @@ class _QuizPageState extends State<QuizPage> {
           text: quizController.questionIndex.value == questions.length - 1
               ? 'Inchide'
               : 'Mai departe',
-          onPressed: () {
-            if (quizController.questionIndex.value < questions.length - 1) {
-              quizController.questionIndex.value++;
-            }
-            setState(() {});
-          })),
+          onPressed: quizController.questionSelectedIndex.value == 5
+              ? null
+              : () {
+                  if (quizController.questionIndex.value <
+                      questions.length - 1) {
+                    quizController.questionIndex.value++;
+                    quizController.disableButton();
+                  }
+                  setState(() {});
+                })),
     );
   }
 }

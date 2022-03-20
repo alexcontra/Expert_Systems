@@ -1,23 +1,21 @@
-import 'package:expertsystems/components/bottom_navigation.dart';
-import 'package:expertsystems/design_specs/constraints.dart';
-import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
-import 'package:expertsystems/quiz/quiz_page/quiz.dart';
+import 'package:expertsystems/home/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../components/bottom_navigation.dart';
 import '../../design_specs/assets.dart';
+import '../../design_specs/constraints.dart';
 import '../../design_specs/fonts.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class EndQuiz extends StatefulWidget {
+  const EndQuiz({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<EndQuiz> createState() => _EndQuizState();
 }
 
-class _HomePageState extends State<HomePage> {
-  QuizController quizController = Get.put(QuizController());
+class _EndQuizState extends State<EndQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                     right: AppMargins.margin20,
                     top: AppMargins.margin20),
                 child: SvgPicture.asset(
-                  Assets.foodSVG,
+                  Assets.eatingSVG,
                   width: Heights.Height200,
                   height: Heights.Height200,
                 ),
@@ -49,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   left: AppMargins.margin20,
                   right: AppMargins.margin20),
               child: Text(
-                'Esti mereu indecis ce sa mananci?',
+                'Felicitari, ai terminat chestionarul',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.9),
@@ -64,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                   left: AppMargins.margin20,
                   right: AppMargins.margin20),
               child: Text(
-                'Noi avem solutia. Vezi ce mancare ti se potriveste.',
+                'In urma evaluarii raspunsurilor tale,felul de mancare care ti se potriveste cel mai bine este',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.5),
@@ -73,13 +71,27 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: AppMargins.margin10,
+                  left: AppMargins.margin20,
+                  right: AppMargins.margin20),
+              child: Text(
+                'Pastele',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: Sizes.size20,
+                ),
+              ),
+            ),
           ],
         ),
         bottomNavigationBar: StandardBottomNavigation(
-            text: 'Incepe chestionar',
+            text: 'Iesire',
             onPressed: () {
-              quizController.resetValues();
-              Get.to(() => const QuizPage());
+              Get.to(() => const HomePage());
             }));
   }
 }

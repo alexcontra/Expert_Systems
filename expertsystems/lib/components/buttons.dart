@@ -1,6 +1,4 @@
-import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../design_specs/constraints.dart';
 import '../design_specs/fonts.dart';
@@ -43,35 +41,37 @@ class _CustomButtonState extends State<CustomButton> {
 class QuizButton extends StatelessWidget {
   final String text;
   final int index;
+  final Color backgroundColor;
+  final Color textColor;
   final void Function()? onPressed;
   const QuizButton(
       {required this.text,
       required this.index,
       required this.onPressed,
+      required this.backgroundColor,
+      required this.textColor,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    QuizController quizController = Get.put(QuizController());
-    return Obx(() => Container(
-          margin: EdgeInsets.only(
-              left: AppMargins.margin10,
-              right: AppMargins.margin10,
-              top: AppMargins.margin20),
-          width: MediaQuery.of(context).size.width,
-          height: Heights.Height65,
-          child: ElevatedButton(
-              onPressed: onPressed,
-              child: Text(
-                text,
-                style: TextStyle(
-                    fontSize: Sizes.size20,
-                    fontWeight: FontWeight.w500,
-                    color: quizController.buttonColorsText[index]),
-              ),
-              style: AppStyles.setButtonStandardStyle(
-                  quizController.buttonColors[index])),
-        ));
+    return Container(
+      margin: EdgeInsets.only(
+          left: AppMargins.margin10,
+          right: AppMargins.margin10,
+          top: AppMargins.margin20),
+      width: MediaQuery.of(context).size.width,
+      height: Heights.Height65,
+      child: ElevatedButton(
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: TextStyle(
+                fontSize: Sizes.size20,
+                fontWeight: FontWeight.w500,
+                color: textColor), //quizController.buttonColorsText[index]
+          ),
+          style: AppStyles.setButtonStandardStyle(backgroundColor)),
+    );
   }
 }

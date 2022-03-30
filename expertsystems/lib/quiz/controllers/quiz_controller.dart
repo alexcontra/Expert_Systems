@@ -5,18 +5,16 @@ class QuizController extends GetxController {
   RxInt questionIndex = 0.obs;
   RxBool isPressedButton = false.obs;
   RxInt questionSelectedIndex = 0.obs;
-  RxList buttonColors = [
-    Colors.grey[400],
-    Colors.grey[400],
-    Colors.grey[400],
-    Colors.grey[400]
-  ].obs;
-  RxList buttonColorsText = [
-    Colors.white,
-    Colors.white,
-    Colors.white,
-    Colors.white,
-  ].obs;
+  late RxList buttonColors;
+  late RxList buttonColorsText;
+
+  initLists(int numberOfAnswers) {
+    for (int i = 0; i < numberOfAnswers; i++) {
+      buttonColors[i] = Colors.grey[400];
+      buttonColorsText[i] = Colors.white;
+    }
+  }
+
   enableButton(int index) {
     buttonColors[index] = Colors.blue[100];
     buttonColorsText[index] = Colors.black;

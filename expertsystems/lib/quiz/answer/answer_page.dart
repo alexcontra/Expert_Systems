@@ -14,14 +14,7 @@ class AnswerPage extends StatefulWidget {
 
 class _AnswerPageState extends State<AnswerPage> {
   final QuizController quizController = Get.put(QuizController());
-  // late List<Color> buttonColors;
-  // @override
-  // void initState() {
-  //   for (int i = 0; i < widget.listOfAnswers.length; i++) {
-  //     buttonColors[i] = Colors.grey[400]!;
-  //   }
-  //   super.initState();
-  // }
+
   List<AnswerModel> answers = [];
   @override
   void initState() {
@@ -30,6 +23,20 @@ class _AnswerPageState extends State<AnswerPage> {
       answers.add(newAnswer);
     }
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant AnswerPage oldWidget) {
+    if (oldWidget.listOfAnswers != widget.listOfAnswers) {
+      answers = [];
+      for (int i = 0; i < widget.listOfAnswers.length; i++) {
+        AnswerModel newAnswer = AnswerModel(widget.listOfAnswers[i]);
+        answers.add(newAnswer);
+      }
+      quizController.currentAnswer.value = '';
+      quizController.slectedAnswerIndex.value = 0;
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -44,14 +51,16 @@ class _AnswerPageState extends State<AnswerPage> {
               text: answers[i].answer!,
               index: i,
               onPressed: () {
-                if (answers[i].backgroundColor == Colors.blue) {
+                if (answers[i].backgroundColor == Colors.blue[400]) {
                   answers[quizController.slectedAnswerIndex.value]
                       .backgroundColor = Colors.grey;
+                  quizController.currentAnswer.value = '';
                 } else {
                   answers[quizController.slectedAnswerIndex.value]
                       .backgroundColor = Colors.grey;
                   quizController.slectedAnswerIndex.value = i;
-                  answers[i].backgroundColor = Colors.blue;
+                  answers[i].backgroundColor = Colors.blue[400];
+                  quizController.currentAnswer.value = answers[i].answer!;
                 }
                 setState(() {});
               })

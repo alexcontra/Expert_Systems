@@ -60,7 +60,6 @@ class _QuizPageState extends State<QuizPage> {
             : IconButton(
                 onPressed: () {
                   quizController.questionIndex.value--;
-                  quizController.disableButton(100);
                   setState(() {});
                 },
                 icon: const Icon(Icons.arrow_back_ios))),
@@ -105,28 +104,24 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
-          AnswerPage(
+          Obx(() => AnswerPage(
               listOfAnswers:
-                  questions[quizController.questionIndex.value].answers!)
+                  questions[quizController.questionIndex.value].answers!)),
         ],
       ),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(
           text: quizController.questionIndex.value == questions.length - 1
               ? 'Inchide'
               : 'Mai departe',
-          onPressed: quizController.questionSelectedIndex.value == 100
-              ? null
-              : () {
-                  if (quizController.questionIndex.value <
-                      questions.length - 1) {
-                    quizController.questionIndex.value++;
-                    quizController
-                        .disableButton(quizController.questionIndex.value);
-                  } else {
-                    Get.to(() => const EndQuiz());
-                  }
-                  setState(() {});
-                })),
+          onPressed: () {
+            if (quizController.questionIndex.value < questions.length - 1) {
+              quizController.questionIndex.value++;
+            } else {
+              quizController.questionIndex.value = 0;
+              Get.to(() => const EndQuiz());
+            }
+            setState(() {});
+          })),
     );
   }
 }

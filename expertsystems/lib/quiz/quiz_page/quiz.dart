@@ -1,6 +1,6 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
-import 'package:expertsystems/components/buttons.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
+import 'package:expertsystems/quiz/answer/answer_page.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:expertsystems/quiz/end_quiz/end_quiz.dart';
 import 'package:expertsystems/service/responses/question.dart';
@@ -21,9 +21,20 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   QuizController quizController = Get.put(QuizController());
   List<Question> questions = [
-    Question(
-        question: 'Ce mananci de obicei la micul dejun?',
-        answers: ['Oua ochiuri', 'Omleta', 'Paine cu gem', 'Altceva']),
+    Question(question: 'Ce mananci de obicei la micul dejun?', answers: [
+      'Oua ochiuri',
+      'Omleta',
+      'Paine cu gem',
+      'Altceva',
+      'Oua ochiuri',
+      'Omleta',
+      'Paine cu gem',
+      'Altceva',
+      'Oua ochiuri',
+      'Omleta',
+      'Paine cu gem',
+      'Altceva',
+    ]),
     Question(
         question: 'Ce mananci de obicei la pranz?',
         answers: ['Salta Cezar', 'Supa crema', 'Peste', 'Altceva']),
@@ -31,6 +42,12 @@ class _QuizPageState extends State<QuizPage> {
         question: 'Ce mananci de obicei la cina?',
         answers: ['Friptura', 'Paste', 'Burger', 'Altceva']),
   ];
+  @override
+  void initState() {
+    // quizController.initLists(20);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +60,6 @@ class _QuizPageState extends State<QuizPage> {
             : IconButton(
                 onPressed: () {
                   quizController.questionIndex.value--;
-                  quizController.disableButton(5);
                   setState(() {});
                 },
                 icon: const Icon(Icons.arrow_back_ios))),
@@ -88,38 +104,24 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
-          for (int i = 0;
-              i < questions[quizController.questionIndex.value].answers!.length;
-              i++)
-            Obx(() => QuizButton(
-                text: questions[quizController.questionIndex.value].answers![i],
-                index: i,
-                onPressed: () {
-                  if (quizController.questionSelectedIndex.value != 5) {
-                    quizController.disableButton(5);
-                    quizController.enableButton(i);
-                  } else {
-                    quizController.enableButton(i);
-                  }
-                })),
+          Obx(() => AnswerPage(
+              listOfAnswers:
+                  questions[quizController.questionIndex.value].answers!)),
         ],
       ),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(
           text: quizController.questionIndex.value == questions.length - 1
               ? 'Inchide'
               : 'Mai departe',
-          onPressed: quizController.questionSelectedIndex.value == 5
-              ? null
-              : () {
-                  if (quizController.questionIndex.value <
-                      questions.length - 1) {
-                    quizController.questionIndex.value++;
-                    quizController.disableButton(5);
-                  } else {
-                    Get.to(() => const EndQuiz());
-                  }
-                  setState(() {});
-                })),
+          onPressed: () {
+            if (quizController.questionIndex.value < questions.length - 1) {
+              quizController.questionIndex.value++;
+            } else {
+              quizController.questionIndex.value = 0;
+              Get.to(() => const EndQuiz());
+            }
+            setState(() {});
+          })),
     );
   }
 }

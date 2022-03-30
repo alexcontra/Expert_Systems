@@ -78,7 +78,6 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: StandardBottomNavigation(
             text: 'Incepe chestionar',
             onPressed: () {
-              quizController.resetValues();
               Get.to(() => const QuizPage());
             }));
   }

@@ -44,11 +44,14 @@ class _AnswerPageState extends State<AnswerPage> {
               text: answers[i].answer!,
               index: i,
               onPressed: () {
-                if (quizController.questionSelectedIndex.value != 100) {
-                  quizController.disableButton(100);
-                  answers[i].backgroundColor == Colors.blue[400];
+                if (answers[i].backgroundColor == Colors.blue) {
+                  answers[quizController.slectedAnswerIndex.value]
+                      .backgroundColor = Colors.grey;
                 } else {
-                  answers[i].backgroundColor == Colors.blue[400];
+                  answers[quizController.slectedAnswerIndex.value]
+                      .backgroundColor = Colors.grey;
+                  quizController.slectedAnswerIndex.value = i;
+                  answers[i].backgroundColor = Colors.blue;
                 }
                 setState(() {});
               })

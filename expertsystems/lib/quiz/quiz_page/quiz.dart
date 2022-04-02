@@ -49,53 +49,47 @@ class _QuizPageState extends State<QuizPage> {
           style: TextStyle(fontWeight: FontWeight.w500),
         ),
       ),
-      body: Obx(() => quizController.isLoading.value
-          ? customCircularProgressIndicator(context, 10)
-          : Column(
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+                top: AppMargins.margin20,
+                left: AppMargins.margin20,
+                right: AppMargins.margin20),
+            child: Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: AppMargins.margin20,
-                      left: AppMargins.margin20,
-                      right: AppMargins.margin20),
-                  child: Row(
-                    children: [
-                      Obx(() => Text(
-                            '${quizController.questionIndex.value + 1}/${widget.question.length}',
-                            style: TextStyle(
-                                color: Colors.grey[500],
-                                fontSize: Sizes.size20),
-                          )),
-                      const Spacer(),
-                      SvgPicture.asset(
-                        Assets.questionSVG,
-                        width: Heights.Height100,
-                        height: Heights.Height100,
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: AppMargins.margin20,
-                      left: AppMargins.margin20,
-                      right: AppMargins.margin20),
-                  child: Obx(
-                    () => Text(
-                      widget
-                          .question[quizController.questionIndex.value].title!,
-                      textAlign: TextAlign.left,
+                Obx(() => Text(
+                      '${quizController.questionIndex.value + 1}/${widget.question.length}',
                       style: TextStyle(
-                          color: Colors.black, fontSize: Sizes.size20),
-                    ),
-                  ),
-                ),
-                Obx(() => AnswerPage(
-                    listOfAnswers: widget
-                        .question[quizController.questionIndex.value]
-                        .answers!)),
+                          color: Colors.grey[500], fontSize: Sizes.size20),
+                    )),
+                const Spacer(),
+                SvgPicture.asset(
+                  Assets.questionSVG,
+                  width: Heights.Height100,
+                  height: Heights.Height100,
+                )
               ],
-            )),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                top: AppMargins.margin20,
+                left: AppMargins.margin20,
+                right: AppMargins.margin20),
+            child: Obx(
+              () => Text(
+                widget.question[quizController.questionIndex.value].title!,
+                textAlign: TextAlign.left,
+                style: TextStyle(color: Colors.black, fontSize: Sizes.size20),
+              ),
+            ),
+          ),
+          Obx(() => AnswerPage(
+              listOfAnswers: widget
+                  .question[quizController.questionIndex.value].answers!)),
+        ],
+      ),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(
           text: quizController.questionIndex.value == widget.question.length - 1
               ? 'Inchide'

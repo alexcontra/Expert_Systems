@@ -1,7 +1,9 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
+import 'package:expertsystems/network/api_service/quiz_api_service.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:expertsystems/quiz/quiz_page/quiz.dart';
+import 'package:expertsystems/service/responses/question/question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -77,8 +79,9 @@ class _HomePageState extends State<HomePage> {
         ),
         bottomNavigationBar: StandardBottomNavigation(
             text: 'Incepe chestionar',
-            onPressed: () {
-              Get.to(() => const QuizPage());
+            onPressed: () async {
+              List<Question> questions = await QuizService().questionService();
+              Get.to(() => QuizPage(question: questions));
             }));
   }
 }

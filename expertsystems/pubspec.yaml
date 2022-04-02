@@ -20,6 +20,8 @@ dependencies:
   freezed: ^1.1.1
   retrofit: ^3.0.1+1
   json_annotation: ^4.4.0
+  retrofit_generator: ^4.0.1
+  loading_indicator: ^3.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:expertsystems/service/responses/answer/answer.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'question.freezed.dart';
@@ -6,8 +7,9 @@ part 'question.g.dart';
 @freezed
 class Question with _$Question {
   factory Question({
-    String? question,
-    List<String>? answers,
+    String? id,
+    String? title,
+    List<Answer>? answers,
   }) = _Question;
 
   factory Question.fromJson(Map<String, dynamic> json) =>

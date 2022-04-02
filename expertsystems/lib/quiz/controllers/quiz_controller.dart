@@ -6,4 +6,5 @@ class QuizController extends GetxController {
   RxInt questionSelectedIndex = 0.obs;
   RxInt slectedAnswerIndex = 0.obs;
   RxString currentAnswer = ''.obs;
+  RxBool isLoading = false.obs;
 }

@@ -25,7 +25,7 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   void initState() {
-    // quizController.initLists(20);
+    // print(quizController.isLoading.value);
     super.initState();
   }
 
@@ -49,8 +49,9 @@ class _QuizPageState extends State<QuizPage> {
           style: TextStyle(fontWeight: FontWeight.w500),
         ),
       ),
-      body: quizController.isLoading.value
-          ? Column(
+      body: Obx(() => quizController.isLoading.value
+          ? customCircularProgressIndicator(context, 10)
+          : Column(
               children: [
                 Padding(
                   padding: EdgeInsets.only(
@@ -81,7 +82,8 @@ class _QuizPageState extends State<QuizPage> {
                       right: AppMargins.margin20),
                   child: Obx(
                     () => Text(
-                      "questions[quizController.questionIndex.value].title!",
+                      widget
+                          .question[quizController.questionIndex.value].title!,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Colors.black, fontSize: Sizes.size20),
@@ -93,8 +95,7 @@ class _QuizPageState extends State<QuizPage> {
                         .question[quizController.questionIndex.value]
                         .answers!)),
               ],
-            )
-          : customCircularProgressIndicator(context, 10),
+            )),
       bottomNavigationBar: Obx(() => StandardBottomNavigation(
           text: quizController.questionIndex.value == widget.question.length - 1
               ? 'Inchide'

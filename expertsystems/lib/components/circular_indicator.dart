@@ -10,7 +10,7 @@ Widget customCircularProgressIndicator(BuildContext context, double margin) {
         child: const LoadingIndicator(
           indicatorType: Indicator.ballRotateChase,
           colors: [
-            Colors.purple,
+            Color.fromARGB(255, 95, 159, 211),
             Colors.blue,
           ],
         ),

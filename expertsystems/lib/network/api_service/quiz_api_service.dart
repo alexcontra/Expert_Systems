@@ -14,8 +14,7 @@ class QuizService {
     quizController.isLoading.value = true;
     try {
       retValue = await client.queryQuestion();
-    } on DioError catch (e) {
-      print(e.toString());
+    } on DioError {
       Get.snackbar('Error', 'Something went wrong!');
     } finally {
       quizController.isLoading.value = false;

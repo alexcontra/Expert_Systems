@@ -1,11 +1,12 @@
 import 'package:expertsystems/components/buttons.dart';
 import 'package:expertsystems/models/answer_model.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
+import 'package:expertsystems/service/responses/answer/answer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AnswerPage extends StatefulWidget {
-  final List<String> listOfAnswers;
+  final List<Answer> listOfAnswers;
   const AnswerPage({required this.listOfAnswers, Key? key}) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class _AnswerPageState extends State<AnswerPage> {
   @override
   void initState() {
     for (int i = 0; i < widget.listOfAnswers.length; i++) {
-      AnswerModel newAnswer = AnswerModel(widget.listOfAnswers[i]);
+      AnswerModel newAnswer = AnswerModel(widget.listOfAnswers[i].title);
       answers.add(newAnswer);
     }
     super.initState();
@@ -30,7 +31,7 @@ class _AnswerPageState extends State<AnswerPage> {
     if (oldWidget.listOfAnswers != widget.listOfAnswers) {
       answers = [];
       for (int i = 0; i < widget.listOfAnswers.length; i++) {
-        AnswerModel newAnswer = AnswerModel(widget.listOfAnswers[i]);
+        AnswerModel newAnswer = AnswerModel(widget.listOfAnswers[i].title);
         answers.add(newAnswer);
       }
       quizController.currentAnswer.value = '';

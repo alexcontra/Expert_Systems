@@ -1,16 +1,16 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
-import 'package:expertsystems/components/circular_indicator.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
-import 'package:expertsystems/quiz/answer/answer_page.dart';
+import 'package:expertsystems/quiz/answer/ui/answer_page.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:expertsystems/quiz/end_quiz/end_quiz.dart';
+import 'package:expertsystems/quiz/quiz_page/business_logic/quiz_view_model.dart';
 import 'package:expertsystems/service/responses/question/question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../design_specs/assets.dart';
-import '../../design_specs/fonts.dart';
+import '../../../design_specs/assets.dart';
+import '../../../design_specs/fonts.dart';
 
 class QuizPage extends StatefulWidget {
   final List<Question> question;
@@ -22,13 +22,6 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   QuizController quizController = Get.put(QuizController());
-
-  @override
-  void initState() {
-    // print(quizController.isLoading.value);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,16 +87,20 @@ class _QuizPageState extends State<QuizPage> {
           text: quizController.questionIndex.value == widget.question.length - 1
               ? 'Inchide'
               : 'Mai departe',
-          onPressed: () {
-            if (quizController.questionIndex.value <
-                widget.question.length - 1) {
-              quizController.questionIndex.value++;
-            } else {
-              quizController.questionIndex.value = 0;
-              Get.to(() => const EndQuiz());
-            }
-            setState(() {});
-          })),
+          onPressed:
+              quizController.questionIndex.value == widget.question.length - 1
+                  ? () {
+                      getRecipies(widget.question);
+                      quizController.questionIndex.value = 0;
+                      Get.to(() => const EndQuiz());
+                    }
+                  : () {
+                      if (quizController.questionIndex.value <
+                          widget.question.length - 1) {
+                        quizController.questionIndex.value++;
+                      }
+                      setState(() {});
+                    })),
     );
   }
 }

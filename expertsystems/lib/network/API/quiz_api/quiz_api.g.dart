@@ -9,7 +9,9 @@ part of 'quiz_api.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 class _QuestionRest implements QuestionRest {
-  _QuestionRest(this._dio, {this.baseUrl});
+  _QuestionRest(this._dio, {this.baseUrl}) {
+    baseUrl ??= 'http://localhost:8080';
+  }
 
   final Dio _dio;
 

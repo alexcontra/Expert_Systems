@@ -3,7 +3,7 @@ import 'package:expertsystems/components/circular_indicator.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
 import 'package:expertsystems/network/api_service/quiz_api_service.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
-import 'package:expertsystems/quiz/quiz_page/quiz.dart';
+import 'package:expertsystems/quiz/quiz_page/ui/quiz.dart';
 import 'package:expertsystems/service/responses/question/question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
             text: 'Incepe chestionar',
             onPressed: () async {
               List<Question> questions = await QuizService().questionService();
-              if (!quizController.isLoading.value) {
+              if (!quizController.isLoading.value && questions.isNotEmpty) {
                 Get.to(() => QuizPage(question: questions));
               }
             }));

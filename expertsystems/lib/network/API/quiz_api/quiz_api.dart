@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 
 part 'quiz_api.g.dart';
 
-@RestApi(baseUrl: 'localhost:8080')
+@RestApi(baseUrl: 'http://localhost:8080')
 abstract class QuestionRest {
   factory QuestionRest(Dio dio, {String baseUrl}) = _QuestionRest;
 
-  @GET('question')
+  @GET('/question')
   Future<List<Question>> queryQuestion();
 }

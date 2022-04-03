@@ -1,7 +1,7 @@
 import 'package:expertsystems/components/bottom_navigation.dart';
 import 'package:expertsystems/components/circular_indicator.dart';
 import 'package:expertsystems/design_specs/constraints.dart';
-import 'package:expertsystems/quiz/answer/answer_page.dart';
+import 'package:expertsystems/quiz/answer/ui/answer_page.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:expertsystems/quiz/end_quiz/end_quiz.dart';
 import 'package:expertsystems/service/responses/question/question.dart';

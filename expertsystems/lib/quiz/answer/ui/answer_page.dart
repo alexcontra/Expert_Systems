@@ -1,5 +1,6 @@
 import 'package:expertsystems/components/buttons.dart';
 import 'package:expertsystems/models/answer_model.dart';
+import 'package:expertsystems/quiz/answer/business_logic/answer_page_view_model.dart';
 import 'package:expertsystems/quiz/controllers/quiz_controller.dart';
 import 'package:expertsystems/service/responses/answer/answer.dart';
 import 'package:flutter/material.dart';
@@ -53,15 +54,12 @@ class _AnswerPageState extends State<AnswerPage> {
               index: i,
               onPressed: () {
                 if (answers[i].backgroundColor == Colors.blue[400]) {
-                  answers[quizController.slectedAnswerIndex.value]
-                      .backgroundColor = Colors.grey;
-                  quizController.currentAnswer.value = '';
+                  answers[i].backgroundColor = Colors.grey;
+                  deleteAnswer(answers[i].answer!);
                 } else {
-                  answers[quizController.slectedAnswerIndex.value]
-                      .backgroundColor = Colors.grey;
-                  quizController.slectedAnswerIndex.value = i;
                   answers[i].backgroundColor = Colors.blue[400];
                   quizController.currentAnswer.value = answers[i].answer!;
+                  saveAnswer(answers[i].answer!);
                 }
                 setState(() {});
               })

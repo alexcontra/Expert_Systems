@@ -8,7 +8,6 @@ class QuizService {
   Future<List<Question>> questionService() async {
     final Dio dio = Dio();
     final client = QuestionRest(dio);
-    dio.options = BaseOptions(baseUrl: 'http://localhost:8080');
     QuizController quizController = Get.put(QuizController());
     List<Question> retValue = [];
     quizController.isLoading.value = true;

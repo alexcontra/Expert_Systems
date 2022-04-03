@@ -22,11 +22,11 @@ Answer _$AnswerFromJson(Map<String, dynamic> json) {
 class _$AnswerTearOff {
   const _$AnswerTearOff();
 
-  _Answer call({String? id, String? title, List<String>? recipies}) {
+  _Answer call({String? id, String? title, List<String>? recipes}) {
     return _Answer(
       id: id,
       title: title,
-      recipies: recipies,
+      recipes: recipes,
     );
   }
 
@@ -42,7 +42,7 @@ const $Answer = _$AnswerTearOff();
 mixin _$Answer {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
-  List<String>? get recipies => throw _privateConstructorUsedError;
+  List<String>? get recipes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ mixin _$Answer {
 abstract class $AnswerCopyWith<$Res> {
   factory $AnswerCopyWith(Answer value, $Res Function(Answer) then) =
       _$AnswerCopyWithImpl<$Res>;
-  $Res call({String? id, String? title, List<String>? recipies});
+  $Res call({String? id, String? title, List<String>? recipes});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$AnswerCopyWithImpl<$Res> implements $AnswerCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
-    Object? recipies = freezed,
+    Object? recipes = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -79,9 +79,9 @@ class _$AnswerCopyWithImpl<$Res> implements $AnswerCopyWith<$Res> {
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      recipies: recipies == freezed
-          ? _value.recipies
-          : recipies // ignore: cast_nullable_to_non_nullable
+      recipes: recipes == freezed
+          ? _value.recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
@@ -92,7 +92,7 @@ abstract class _$AnswerCopyWith<$Res> implements $AnswerCopyWith<$Res> {
   factory _$AnswerCopyWith(_Answer value, $Res Function(_Answer) then) =
       __$AnswerCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? title, List<String>? recipies});
+  $Res call({String? id, String? title, List<String>? recipes});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$AnswerCopyWithImpl<$Res> extends _$AnswerCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
-    Object? recipies = freezed,
+    Object? recipes = freezed,
   }) {
     return _then(_Answer(
       id: id == freezed
@@ -119,9 +119,9 @@ class __$AnswerCopyWithImpl<$Res> extends _$AnswerCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      recipies: recipies == freezed
-          ? _value.recipies
-          : recipies // ignore: cast_nullable_to_non_nullable
+      recipes: recipes == freezed
+          ? _value.recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
@@ -130,7 +130,7 @@ class __$AnswerCopyWithImpl<$Res> extends _$AnswerCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Answer implements _Answer {
-  _$_Answer({this.id, this.title, this.recipies});
+  _$_Answer({this.id, this.title, this.recipes});
 
   factory _$_Answer.fromJson(Map<String, dynamic> json) =>
       _$$_AnswerFromJson(json);
@@ -140,11 +140,11 @@ class _$_Answer implements _Answer {
   @override
   final String? title;
   @override
-  final List<String>? recipies;
+  final List<String>? recipes;
 
   @override
   String toString() {
-    return 'Answer(id: $id, title: $title, recipies: $recipies)';
+    return 'Answer(id: $id, title: $title, recipes: $recipes)';
   }
 
   @override
@@ -154,7 +154,7 @@ class _$_Answer implements _Answer {
             other is _Answer &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.recipies, recipies));
+            const DeepCollectionEquality().equals(other.recipes, recipes));
   }
 
   @override
@@ -162,7 +162,7 @@ class _$_Answer implements _Answer {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(recipies));
+      const DeepCollectionEquality().hash(recipes));
 
   @JsonKey(ignore: true)
   @override
@@ -176,7 +176,7 @@ class _$_Answer implements _Answer {
 }
 
 abstract class _Answer implements Answer {
-  factory _Answer({String? id, String? title, List<String>? recipies}) =
+  factory _Answer({String? id, String? title, List<String>? recipes}) =
       _$_Answer;
 
   factory _Answer.fromJson(Map<String, dynamic> json) = _$_Answer.fromJson;
@@ -186,7 +186,7 @@ abstract class _Answer implements Answer {
   @override
   String? get title;
   @override
-  List<String>? get recipies;
+  List<String>? get recipes;
   @override
   @JsonKey(ignore: true)
   _$AnswerCopyWith<_Answer> get copyWith => throw _privateConstructorUsedError;

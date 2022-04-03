@@ -8,7 +8,7 @@ class Answer with _$Answer {
   factory Answer({
     String? id,
     String? title,
-    List<String>? recipies,
+    List<String>? recipes,
   }) = _Answer;
 
   factory Answer.fromJson(Map<String, dynamic> json) => _$AnswerFromJson(json);

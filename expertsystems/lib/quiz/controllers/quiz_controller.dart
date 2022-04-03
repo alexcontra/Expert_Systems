@@ -7,5 +7,6 @@ class QuizController extends GetxController {
   RxInt slectedAnswerIndex = 0.obs;
   RxString currentAnswer = ''.obs;
   RxBool isLoading = false.obs;
+  List<String> finalRecipes = [];
   List<String> finalAnswers = [];
 }

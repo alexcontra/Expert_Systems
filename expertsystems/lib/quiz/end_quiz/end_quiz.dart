@@ -19,6 +19,12 @@ class EndQuiz extends StatefulWidget {
 class _EndQuizState extends State<EndQuiz> {
   QuizController quizController = Get.put(QuizController());
   @override
+  void initState() {
+    quizController.finalRecipes = quizController.finalRecipes.toSet().toList();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
